@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th> 제목 </th>
+            <th> 작성일 </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="question : ${questionList}">
+            <td>
+                <a th:href="@{|/question/detail/${question.id}|}"
+                th:text="${question.subject}"></a>
+            </td>
+            <td th:text="${question.createDate}"></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

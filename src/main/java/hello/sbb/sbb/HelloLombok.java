@@ -1,4 +1,4 @@
-package hello.sbb;
+package hello.sbb.sbb;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
