@@ -8,6 +8,7 @@
   <title>Hello, sbb!</title>
 </head>
 <body>
+<!-- replace를 다른 템플릿 내용 사용 가능-->
 <nav th:replace="~{navbar :: navbarFragment}"></nav>
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
 <th:block layout:fragment="content"></th:block>

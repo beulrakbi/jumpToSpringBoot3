@@ -4,6 +4,7 @@ import hello.sbb.answer.Answer;
 import hello.sbb.answer.AnswerRepository;
 import hello.sbb.question.Question;
 import hello.sbb.question.QuestionRepository;
+import hello.sbb.question.QuestionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +22,8 @@ class SbbApplicationTests {
 
     @Autowired //의존성 주입이라는 기능을 사용하여 QuestionRepository의 객체를 주입
     private QuestionRepository questionRepository;
+    @Autowired
+    private QuestionService questionService;
 
     @Autowired
     private AnswerRepository answerRepository;
@@ -78,5 +81,14 @@ class SbbApplicationTests {
 
         assertEquals(1, answerList.size());
         assertEquals("네 자동으로 생성됩니다.", answerList.get(0).getContent());
+    }
+
+    @Test
+    void 페이징을위한대량데이터생성(){
+        for(int i=1; i<=300; i++){
+            String subject = String.format("테스트 데이터입니다:[%03d]", i);
+            String content = "내용 없음";
+            this.questionService.create(subject, content);
+        }
     }
 }

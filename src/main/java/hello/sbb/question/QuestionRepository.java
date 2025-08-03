@@ -1,5 +1,7 @@
 package hello.sbb.question;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -10,4 +12,5 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
     Question findBySubject(String subject); //findBySubject은 findById처럼 정의되어있지 않기 때문에 직접 정의
     Question findBySubjectAndContent(String subject, String content); //And를 활용해 데이터베이스에서 두 개의 열 조회
     List<Question> findBySubjectLike(String subject);
+    Page<Question> findAll(Pageable pageable);
 }
