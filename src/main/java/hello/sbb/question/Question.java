@@ -1,6 +1,7 @@
 package hello.sbb.question;
 
 import hello.sbb.answer.Answer;
+import hello.sbb.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,4 +27,9 @@ public class Question {
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE) //answer 엔티티에서 question 엔티티를 참조한 속성인 question을 mappedBy에 전달, 질문이 삭제되면 답변도 삭제
     private List<Answer> answerList;
+
+    @ManyToOne //사용자 한 명이 질문을 여러 개 작성할 수 있기 때문
+    private SiteUser author;
+
+    private LocalDateTime modifyDate;
 }

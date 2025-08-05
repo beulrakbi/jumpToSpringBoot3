@@ -1,6 +1,7 @@
 package hello.sbb.answer;
 
 import hello.sbb.question.Question;
+import hello.sbb.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,4 +24,8 @@ public class Answer {
     @ManyToOne //한개의 질문에 여러개 답변 가능
     private Question question;
 
+    @ManyToOne
+    private SiteUser author;
+
+    private LocalDateTime modifyDate;
 }
